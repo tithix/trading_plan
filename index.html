@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Intraday Trading Plan</title>
+    <title>Plan de Trading Intraday</title>
     <style>
         :root {
             --bg-dark: #131722;
@@ -54,6 +54,33 @@
             margin: 5px 0 0;
             color: var(--text-secondary);
             font-size: 1.1em;
+        }
+
+        .lang-switcher {
+            position: absolute;
+            top: 25px;
+            right: 30px;
+        }
+
+        .lang-switcher button {
+            background-color: #5a5a5a;
+            /* Inactive color */
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background-color 0.2s;
+        }
+
+        .lang-switcher button.active {
+            background-color: #FF5722;
+            /* Active color */
+        }
+
+        .lang-switcher button:not(.active):hover {
+            background-color: #7a7a7a;
         }
 
         main {
@@ -150,159 +177,331 @@
             padding-left: 0;
             margin-bottom: 10px;
         }
-        
-        .lang-switcher {
-            position: absolute;
-            top: 25px;
-            right: 30px;
+
+        [lang="en"] {
+            display: none;
         }
 
-        .lang-switcher button {
-            background-color: #FF5722;
-            color: white;
-            border: none;
-            padding: 10px 15px;
-            border-radius: 5px;
-            cursor: pointer;
-            font-weight: bold;
-            transition: background-color 0.2s;
-        }
-
-        .lang-switcher button:hover {
-            background-color: #E64A19;
+        [lang="fr"] {
+            display: block;
         }
     </style>
+    <script>
+        function switchLang(lang) {
+            const btnFr = document.getElementById('btn-fr');
+            const btnEn = document.getElementById('btn-en');
+
+            document.querySelectorAll('[lang]').forEach(el => {
+                el.style.display = 'none';
+            });
+
+            if (lang === 'en') {
+                document.documentElement.lang = 'en';
+                document.title = 'Intraday Trading Plan';
+                document.querySelectorAll('[lang="en"]').forEach(el => el.style.display = 'block');
+                btnEn.classList.add('active');
+                btnFr.classList.remove('active');
+            } else {
+                document.documentElement.lang = 'fr';
+                document.title = 'Plan de Trading Intraday';
+                document.querySelectorAll('[lang="fr"]').forEach(el => el.style.display = 'block');
+                btnFr.classList.add('active');
+                btnEn.classList.remove('active');
+            }
+        }
+    </script>
 </head>
 
 <body>
     <div class="container">
         <header>
             <div class="lang-switcher">
-                <button onclick="location.href='index_save.html'" type="button">FR</button>
+                <button id="btn-fr" onclick="switchLang('fr')" type="button" class="active">FR</button>
+                <button id="btn-en" onclick="switchLang('en')" type="button">EN</button>
             </div>
-            <h1>Trading Plan - Intraday Cycles</h1>
-            <p>Strategy based on 3drives cyclical concepts | FEPO (For Education Purpose Only)</p>
+            <div lang="fr">
+                <h1>Plan de Trading - Cycles Intraday</h1>
+                <p>Stratégie basée sur les concepts cycliques de 3drives | FEPO (For Education Purpose Only)</p>
+            </div>
+            <div lang="en">
+                <h1>Trading Plan - Intraday Cycles</h1>
+                <p>Strategy based on 3drives cyclical concepts | FEPO (For Education Purpose Only)</p>
+            </div>
         </header>
         <main>
-            <section>
-                <h2>General Interest</h2>
-                <p>The objective is to align with institutional movements by identifying market manipulation
-                    phases, post (re)accumulation/(re)distribution. The strategy relies on patience, discipline, and waiting for
-                    multiple confluences before risking capital. We don't trade patterns; we trade context.</p>
-            </section>
+            <!-- French Content -->
+            <div lang="fr">
+                <section>
+                    <h2>Intérêt Général</h2>
+                    <p>L'objectif est de s'aligner avec les mouvements institutionnels en identifiant les
+                        phases de manipulation de marché, post (ré)accumulation/(re)distribution. La stratégie repose
+                        sur la
+                        patience, la discipline et l'attente de
+                        confluences multiples avant de risquer du capital. On ne trade pas des patterns, on trade un
+                        contexte.</p>
+                </section>
 
-            <section>
-                <h2>Main Strategy: The Re-accumulation Scenario</h2>
-                <p>This strategy aims to capture the continuation of a major trend after a manipulation phase
-                    intended to liquidate "weak hands" (re-accumulation). Simply put, it's a retracement
-                    before a new expansion in the direction of the initial trend (IRL > ERL).</p>
-                <div class="grid">
-                    <div class="card">
-                        <h3>1. Bias (HTF)</h3>
-                        <p>Identify the underlying trend on the <strong class="highlight">H1</strong>. If the trend
-                            is bullish, our bias is <strong class="highlight">Bullish</strong>. We will only
-                            look for buys.</p>
+                <section>
+                    <h2>Stratégie Principale : Le Scénario de Ré-accumulation</h2>
+                    <p>Cette stratégie vise à capter la continuation d'une tendance de fond après une phase de
+                        manipulation
+                        destinée à liquider les "mains faibles" (ré-accumulation). En toute simplicité, c'est un
+                        retracement
+                        avant une nouvelle expansion dans le sens de la tendance initiale (IRL > ERL).</p>
+                    <div class="grid">
+                        <div class="card">
+                            <h3>1. Biais (HTF)</h3>
+                            <p>Identifier la tendance de fond sur le <strong class="highlight">H1</strong>. Si la
+                                tendance
+                                est haussière, notre biais est <strong class="highlight">Bullish</strong>. Nous
+                                chercherons
+                                uniquement des achats.</p>
+                        </div>
+                        <div class="card">
+                            <h3>2. Manipulation</h3>
+                            <p>Attendre une manipulation baissière qui pousse le prix dans une <strong
+                                    class="highlight">zone de "Discount"</strong> (sous les 50% d'un range pertinent,
+                                idéalement au niveau 0.75).</p>
+                        </div>
+                        <div class="card">
+                            <h3>3. Confirmation (LTF)</h3>
+                            <p>Observer une réaction haussière claire sur le <strong class="highlight">M1/M5</strong>
+                                lorsque le prix atteint notre zone d'intérêt. C'est le signal d'entrée.</p>
+                        </div>
                     </div>
-                    <div class="card">
-                        <h3>2. Manipulation</h3>
-                        <p>Wait for a bearish manipulation that pushes the price into a <strong
-                                class="highlight">"Discount" zone</strong> (below 50% of a relevant range,
-                            ideally at the 0.75 level).</p>
-                    </div>
-                    <div class="card">
-                        <h3>3. Confirmation (LTF)</h3>
-                        <p>Observe a clear bullish reaction on the <strong class="highlight">M1/M5</strong>
-                            when the price reaches our area of interest. This is the entry signal.</p>
-                    </div>
-                </div>
-            </section>
+                </section>
 
-            <section>
-                <h2>Key Confluences & Filters</h2>
-                <h3>The conditions must be met to consider a trade.</h3>
-                <ul>
-                    <li><strong>Time Filter:</strong> The setup must occur during <strong
-                            class="highlight">Cycle 3 (06:00 - 12:00 EST)</strong>, the "New York" session,
-                        to maximize volatility and liquidity.</li>
-                    <li><strong>Price Filter:</strong> The entry must be in a <strong
-                            class="highlight">Discount</strong> zone (for a buy) or <strong
-                            class="highlight">Premium</strong> zone (for a sale).</li>
-                    <li><strong>Point of Interest (POI):</strong> The "Discount" zone must contain a confluence of
-                        an <code class="code">Order Block (OB) that supports the initial trend</code> and an <code
-                            class="code">unmitigated or partially mitigated Fair Value Gap (FVG) in the direction of the trend</code>.
-                        This is our high-probability zone.
-                    </li>
-                    <li><strong>Liquidity Target:</strong> A clear and logical target must exist, typically
-                        the <strong class="highlight">Previous Day High (PDH)</strong> for a buy, or the <strong
-                            class="highlight">Previous Day Low (PDL)</strong> for a sale.</li>
-                    <li><strong>Stop Loss:</strong> It represents our invalidation level, typically
-                        the <strong class="highlight">Swing(L) that initiated the +FVG</strong> for a buy, or the <strong
-                            class="highlight">Swing(H) that initiated the -FVG</strong> for a sale.</li>
-                </ul>
-            </section>
+                <section>
+                    <h2>Confluences & Filtres Clés</h2>
+                    <h3>Les conditions doivent être réunies pour envisager un trade.</h3>
+                    <ul>
+                        <li><strong>Filtre Temporel :</strong> Le setup doit se présenter durant le <strong
+                                class="highlight">Cycle 3 (06:00 - 12:00 EST)</strong>, la session de "New York"
+                            pour maximiser la volatilité et la liquidité.</li>
+                        <li><strong>Filtre de Prix :</strong> L'entrée doit se faire dans une zone de <strong
+                                class="highlight">Discount</strong> (pour un achat) ou <strong
+                                class="highlight">Premium</strong> (pour une vente).</li>
+                        <li><strong>Zone d'Intérêt (POI) :</strong> La zone de "Discount" doit contenir une confluence
+                            de
+                            <code class="code">Order Block (OB) qui supporte la tendance initiale</code> et de <code
+                                class="code">Fair Value Gap (FVG) dans le sens du trend</code>
+                            non mitigé ou partiellement mitigé. C'est notre zone de haute probabilité.
+                        </li>
+                        <li><strong>Objectif de Liquidité :</strong> Un objectif clair et logique doit exister,
+                            typiquement
+                            le <strong class="highlight">Previous Day High (PDH)</strong> pour un achat, ou le <strong
+                                class="highlight">Previous Day Low (PDL)</strong> pour une vente.</li>
+                        <li><strong>Stop Loss :</strong> Il représente notre niveau d'invalidité, typiquement
+                            le <strong class="highlight">Swing(L) qui a initié le +FVG</strong> pour un achat, ou le
+                            <strong class="highlight">Swing(H) qui a initié le -FVG</strong> pour une vente.</li>
+                    </ul>
+                </section>
 
-            <section>
-                <h2>Position Entry Model (The Setup)</h2>
-                <h3>The exact sequence to execute a trade.</h3>
-                <ol>
-                    <li><strong>Hypothesis:</strong> Formulate a clear thesis. Ex: "The H1 trend is bullish. The
-                        price dropped at the beginning of cycle C1. I anticipate a manipulation in C3 to reach the OB+FVG on
-                        H1
-                        before targeting the PDH."</li>
-                    <li><strong>Waiting:</strong> Let the price reach the predefined <strong class="highlight">Point of Interest
-                            (POI)</strong> without action. Patience is key.</li>
-                    <li><strong>Confirmation:</strong> Wait for the mandatory confirmation signal on the LTF (M1/M5):
-                        a <strong class="highlight">Change in State of Delivery (CISD) or Market Structure
-                            Shift (MSS)</strong>. This manifests as a powerful rejection candle or a break of the local structure to the upside.</li>
-                    <li><strong>Entry:</strong> Place the buy order <strong class="highlight">only
-                            after</strong> the closing of the CISD/MSS confirmation candle.</li>
-                    <li><strong>Invalidation:</strong> If the price moves through the POI without reaction or if no
-                        clear CISD/MSS forms, <strong class="highlight">the setup is invalid. No trade is
-                            taken.</strong></li>
-                </ol>
-            </section>
+                <section>
+                    <h2>Modèle d'Entrée en Position (Le Setup)</h2>
+                    <h3>La séquence exacte pour exécuter un trade.</h3>
+                    <ol>
+                        <li><strong>Hypothèse :</strong> Formuler une thèse claire. Ex: "La tendance H1 est haussière.
+                            Le
+                            prix a chuté en début de cycle C1. J'anticipe une manipulation en C3 pour atteindre l'OB+FVG
+                            en
+                            H1
+                            avant de viser le PDH."</li>
+                        <li><strong>Attente :</strong> Laisser le prix atteindre la <strong class="highlight">Zone
+                                d'Intérêt
+                                (POI)</strong> prédéfinie sans action. La patience est la clé.</li>
+                        <li><strong>Confirmation :</strong> Attendre le signal de confirmation impératif sur le LTF
+                            (M1/M5)
+                            : un <strong class="highlight">Change in State of Delivery (CISD) ou Shift de la Structure
+                                (MSS)</strong>. Cela se manifeste
+                            par une bougie de rejet puissante ou une cassure de la structure locale à la hausse.</li>
+                        <li><strong>Entrée :</strong> Placer l'ordre d'achat <strong class="highlight">uniquement
+                                après</strong> la clôture de la bougie de confirmation du CISD/MSS.</li>
+                        <li><strong>Invalidation :</strong> Si le prix traverse la zone d'intérêt sans réaction ou si
+                            aucun
+                            CISD/MSS clair ne se forme, <strong class="highlight">le setup est invalide. Aucun trade
+                                n'est
+                                pris.</strong></li>
+                    </ol>
+                </section>
 
-            <section>
-                <h2>Position Management</h2>
-                <div class="grid">
-                    <div class="card">
-                        <h3>Stop Loss (SL)</h3>
-                        <p>Placed logically <strong class="highlight">below the low of the Order
-                                Block</strong> or below the wick of the manipulation/confirmation candle. This level
-                            corresponds to an invalidation. <strong class="highlight">After a CISD/MSS, it must remain
-                                preserved</strong>. If it is
-                            broken, we consider it an expansion from a previous manipulation, which
-                            cancels our interest in this trade. </p>
+                <section>
+                    <h2>Gestion de Position</h2>
+                    <div class="grid">
+                        <div class="card">
+                            <h3>Stop Loss (SL)</h3>
+                            <p>Placé de manière logique <strong class="highlight">sous le point bas de l'Order
+                                    Block</strong> ou sous la mèche de la bougie de manipulation/confirmation. Ce niveau
+                                correspond à une invalidation. <strong class="highlight">Après un CISD/MSS, il doit
+                                    rester
+                                    préservé</strong>. S’il est
+                                cassé, nous considérons qu’il s’agit d’une expansion issue d’une manipulation
+                                antérieure, ce
+                                qui
+                                annule notre intérêt pour ce trade. </p>
+                        </div>
+                        <div class="card">
+                            <h3>Take Profit (TP)</h3>
+                            <p>L'objectif principal est le pool de liquidité opposé, soit le <strong
+                                    class="highlight">PDH</strong> quand étant Bullish, soit le <strong
+                                    class="highlight">PDL</strong> quand étant Bearish. Des prises de profit partielles
+                                peuvent être envisagées
+                                sur des niveaux de structure intermédiaires.</p>
+                        </div>
                     </div>
-                    <div class="card">
-                        <h3>Take Profit (TP)</h3>
-                        <p>The main target is the opposing liquidity pool, either the <strong
-                                class="highlight">PDH</strong> when Bullish, or the <strong
-                                class="highlight">PDL</strong> when Bearish. Partial profits can be considered
-                            at intermediate structure levels.</p>
-                    </div>
-                </div>
-            </section>
+                </section>
 
-            <section>
-                <h2>Final Checklist Before Entering</h2>
-                <h3>Ensure each criterion is met.</h3>
-                <ul class="checklist">
-                    <li>Is the <strong class="highlight">H1</strong> trend aligned with my bias?</li>
-                    <li>Is the price in a relevant <strong class="highlight">Discount / Premium</strong>
-                        zone?</li>
-                    <li>Are we in <strong class="highlight">Cycle 3 (sC3 / optional)</strong>?</li>
-                    <li>Has the price touched a clear <code class="code">OB + FVG</code> zone?</li>
-                    <li>Have I observed a clear and indisputable <strong class="highlight">CISD/MSS</strong> on the LTF?
-                    </li>
-                    <li>Is the Risk/Reward ratio towards the <strong class="highlight">PDH/PDL</strong> favorable
-                        (min 1:2)?</li>
-                    <li>Have I checked the economic calendar for imminent high-volatility news?</li>
-                </ul>
-            </section>
+                <section>
+                    <h2>Checklist Finale Avant d'Entrer</h2>
+                    <h3>S'assurer que chaque critère est rempli.</h3>
+                    <ul class="checklist">
+                        <li>La tendance de fond <strong class="highlight">H1</strong> est-elle alignée avec mon biais ?
+                        </li>
+                        <li>Le prix se trouve-t-il dans une zone de <strong class="highlight">Discount /
+                                Premium</strong>
+                            pertinente ?</li>
+                        <li>Sommes-nous dans le <strong class="highlight">Cycle 3 (sC3 / optionnel)</strong> ?</li>
+                        <li>Le prix a-t-il touché une zone <code class="code">OB + FVG</code> claire ?</li>
+                        <li>Ai-je observé un <strong class="highlight">CISD/MSS</strong> clair et indiscutable sur le
+                            LTF ?
+                        </li>
+                        <li>Le ratio Risque/Rendement vers le <strong class="highlight">PDH/PDL</strong> est-il
+                            favorable
+                            (min 1:2) ?</li>
+                        <li>Ai-je vérifié le calendrier économique pour des news à haute volatilité imminentes ?</li>
+                    </ul>
+                </section>
+            </div>
+
+            <!-- English Content -->
+            <div lang="en">
+                <section>
+                    <h2>General Interest</h2>
+                    <p>The objective is to align with institutional movements by identifying market manipulation
+                        phases, post (re)accumulation/(re)distribution. The strategy relies on patience, discipline, and
+                        waiting for
+                        multiple confluences before risking capital. We don't trade patterns; we trade context.</p>
+                </section>
+
+                <section>
+                    <h2>Main Strategy: The Re-accumulation Scenario</h2>
+                    <p>This strategy aims to capture the continuation of a major trend after a manipulation phase
+                        intended to liquidate "weak hands" (re-accumulation). Simply put, it's a retracement
+                        before a new expansion in the direction of the initial trend (IRL > ERL).</p>
+                    <div class="grid">
+                        <div class="card">
+                            <h3>1. Bias (HTF)</h3>
+                            <p>Identify the underlying trend on the <strong class="highlight">H1</strong>. If the trend
+                                is bullish, our bias is <strong class="highlight">Bullish</strong>. We will only
+                                look for buys.</p>
+                        </div>
+                        <div class="card">
+                            <h3>2. Manipulation</h3>
+                            <p>Wait for a bearish manipulation that pushes the price into a <strong
+                                    class="highlight">"Discount" zone</strong> (below 50% of a relevant range,
+                                ideally at the 0.75 level).</p>
+                        </div>
+                        <div class="card">
+                            <h3>3. Confirmation (LTF)</h3>
+                            <p>Observe a clear bullish reaction on the <strong class="highlight">M1/M5</strong>
+                                when the price reaches our area of interest. This is the entry signal.</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section>
+                    <h2>Key Confluences & Filters</h2>
+                    <h3>The conditions must be met to consider a trade.</h3>
+                    <ul>
+                        <li><strong>Time Filter:</strong> The setup must occur during <strong class="highlight">Cycle 3
+                                (06:00 - 12:00 EST)</strong>, the "New York" session,
+                            to maximize volatility and liquidity.</li>
+                        <li><strong>Price Filter:</strong> The entry must be in a <strong
+                                class="highlight">Discount</strong> zone (for a buy) or <strong
+                                class="highlight">Premium</strong> zone (for a sale).</li>
+                        <li><strong>Point of Interest (POI):</strong> The "Discount" zone must contain a confluence of
+                            an <code class="code">Order Block (OB) that supports the initial trend</code> and an <code
+                                class="code">unmitigated or partially mitigated Fair Value Gap (FVG) in the direction of the trend</code>.
+                            This is our high-probability zone.
+                        </li>
+                        <li><strong>Liquidity Target:</strong> A clear and logical target must exist, typically
+                            the <strong class="highlight">Previous Day High (PDH)</strong> for a buy, or the <strong
+                                class="highlight">Previous Day Low (PDL)</strong> for a sale.</li>
+                        <li><strong>Stop Loss:</strong> It represents our invalidation level, typically
+                            the <strong class="highlight">Swing(L) that initiated the +FVG</strong> for a buy, or the
+                            <strong class="highlight">Swing(H) that initiated the -FVG</strong> for a sale.</li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h2>Position Entry Model (The Setup)</h2>
+                    <h3>The exact sequence to execute a trade.</h3>
+                    <ol>
+                        <li><strong>Hypothesis:</strong> Formulate a clear thesis. Ex: "The H1 trend is bullish. The
+                            price dropped at the beginning of cycle C1. I anticipate a manipulation in C3 to reach the
+                            OB+FVG on
+                            H1
+                            before targeting the PDH."</li>
+                        <li><strong>Waiting:</strong> Let the price reach the predefined <strong class="highlight">Point
+                                of Interest
+                                (POI)</strong> without action. Patience is key.</li>
+                        <li><strong>Confirmation:</strong> Wait for the mandatory confirmation signal on the LTF
+                            (M1/M5):
+                            a <strong class="highlight">Change in State of Delivery (CISD) or Market Structure
+                                Shift (MSS)</strong>. This manifests as a powerful rejection candle or a break of the
+                            local structure to the upside.</li>
+                        <li><strong>Entry:</strong> Place the buy order <strong class="highlight">only
+                                after</strong> the closing of the CISD/MSS confirmation candle.</li>
+                        <li><strong>Invalidation:</strong> If the price moves through the POI without reaction or if no
+                            clear CISD/MSS forms, <strong class="highlight">the setup is invalid. No trade is
+                                taken.</strong></li>
+                    </ol>
+                </section>
+
+                <section>
+                    <h2>Position Management</h2>
+                    <div class="grid">
+                        <div class="card">
+                            <h3>Stop Loss (SL)</h3>
+                            <p>Placed logically <strong class="highlight">below the low of the Order
+                                    Block</strong> or below the wick of the manipulation/confirmation candle. This level
+                                corresponds to an invalidation. <strong class="highlight">After a CISD/MSS, it must
+                                    remain
+                                    preserved</strong>. If it is
+                                broken, we consider it an expansion from a previous manipulation, which
+                                cancels our interest in this trade. </p>
+                        </div>
+                        <div class="card">
+                            <h3>Take Profit (TP)</h3>
+                            <p>The main target is the opposing liquidity pool, either the <strong
+                                    class="highlight">PDH</strong> when Bullish, or the <strong
+                                    class="highlight">PDL</strong> when Bearish. Partial profits can be considered
+                                at intermediate structure levels.</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section>
+                    <h2>Final Checklist Before Entering</h2>
+                    <h3>Ensure each criterion is met.</h3>
+                    <ul class="checklist">
+                        <li>Is the <strong class="highlight">H1</strong> trend aligned with my bias?</li>
+                        <li>Is the price in a relevant <strong class="highlight">Discount / Premium</strong>
+                            zone?</li>
+                        <li>Are we in <strong class="highlight">Cycle 3 (sC3 / optional)</strong>?</li>
+                        <li>Has the price touched a clear <code class="code">OB + FVG</code> zone?</li>
+                        <li>Have I observed a clear and indisputable <strong class="highlight">CISD/MSS</strong> on the
+                            LTF?
+                        </li>
+                        <li>Is the Risk/Reward ratio towards the <strong class="highlight">PDH/PDL</strong> favorable
+                            (min 1:2)?</li>
+                        <li>Have I checked the economic calendar for imminent high-volatility news?</li>
+                    </ul>
+                </section>
+            </div>
         </main>
         <footer class="disclaimer">
-            Trading Plan build by 3drives - FEPO - &#169;2023 Thitix
+            Trading Plan build by 3drives - FEPO - &#169;2024 Thitix
         </footer>
     </div>
 </body>
