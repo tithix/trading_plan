@@ -5,12 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Trading Plan | 3drives</title>
-     <link rel="icon"                                                                                                                                                                                                       
-            href="data:image/svg+xml;base64,PHN2ZyB2aWV3Qm94PSIwIDAgMjQgMjQiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGcgaWQ9IlNWR1JlcG9fYmdDYXJyaWVyIiBzdHJva2Utd2lkdGg9IjAiPjwvZz48ZyBpZD0iU1ZHUmVwb190c  
-            mFjZXJDYXJyaWVyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiPjwvZz48ZyBpZD0iU1ZHUmVwb19pY29uQ2FycmllciI+IDxwYXRoIGQ9Ik0yMSAyMUg3LjhDNy4xMTk4NCAyMSA1LjI3OTc2IDIxIDQuNjM4MDMgMjAuNjczQzQuMDczNTQgMj  
-            AuMzg1NCAzLjYxNDYgMTkuOTI2NSAzLjMyNjk4IDE5LjM2MkMzIDE4LjcyMDIgMyAxNy44ODAyIDMgMTYuMlYzTTE1IDRWOFMxMSA4VjEyTTcgMTNWMTdNMTkgNFYxNyIgc3Ryb2tlPSIjZmY4NjQ3IiBzdHJva2Utd2lkdGg9IjIiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2t  
-            lLWxpbmVqb2luPSJyb3VuZCI+PC9wYXRoPiA8L2c+PC9zdmc+">                                                                                                                                                                    
-     <style> 
+    <link rel="icon" href="data:image/svg+xml;base64,PHN2ZyB2aWV3Qm94PSIwIDAgMjQgMjQiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHJlY3QgeD0iOSIgeT0iNiIgd2lkdGg9IjYiIGhlaWdodD0iMTIiIGZpbGw9IiMyNmE2OWEiLz48bGluZSB4MT0iMTIiIHkxPSIyIiB4Mj0iMTIiIHkyPSI2IiBzdHJva2U9IiMyNmE2OWEiIHN0cm9rZS13aWR0aD0iMiIvPjxsaW5lIHgxPSIxMiIgeTE9IjE4IiB4Mj0iMTIiIHkyPSIyMiIgc3Ryb2tlPSIjMjZhNjlhIiBzdHJva2Utd2lkdGg9IjIiLz48L3N2Zz4=">
+    <style>
         :root {
             --bg-dark: #131722;
             --bg-light: #1e222d;
@@ -193,6 +189,53 @@
 
         [lang="fr"] {
             display: block;
+        }
+
+        /* Responsive Design for Mobile */
+        @media screen and (max-width: 768px) {
+            body {
+                padding: 0;
+                -webkit-text-size-adjust: 100%; /* Prevent font scaling on iOS */
+            }
+
+            .container {
+                width: 100%;
+                margin: 0;
+                border: none;
+                border-radius: 0;
+                box-shadow: none;
+            }
+
+            header {
+                padding: 20px 15px;
+                text-align: center;
+                border-radius: 0;
+            }
+
+            header h1 {
+                font-size: 1.6em;
+            }
+            
+            header p {
+                font-size: 1em;
+            }
+
+            .lang-switcher {
+                position: static;
+                margin-bottom: 15px;
+            }
+
+            main {
+                padding: 20px 15px;
+            }
+
+            h2 {
+                font-size: 1.3em;
+            }
+            
+            .grid {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
     <script>
