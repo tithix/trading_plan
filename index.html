@@ -569,7 +569,7 @@
                 </div>
             </main>
             <footer class="disclaimer">
-                Trading Plan build by 3drives - FEPO - &#169;2024 Thitix
+                Trading Plan built by 3drives - FEPO - &#169;2024 Thitix
             </footer>
         </div>
     </div>
@@ -579,12 +579,12 @@
             // Pour changer le mot de passe, modifiez la valeur entre les guillemets ci-dessous
             const password = "@thitix$1708";
 
-            const enteredPassword = prompt("Veuillez entrer le mot de passe pour accéder à la page :");
+            const enteredPassword = prompt("Please enter the password to access the page :");
 
             if (enteredPassword === password) {
                 document.getElementById('protected-content').style.display = 'block';
             } else {
-                alert("Mot de passe incorrect. L'accès est refusé.");
+                alert("Incorrect password. Access is denied.");
                 document.body.innerHTML = '<h1 style="color: white; text-align: center; padding-top: 50px;">Accès Refusé</h1>';
             }
         })();
